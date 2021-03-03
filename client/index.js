@@ -1,10 +1,4 @@
 // step 1
-
-const NameRegistryJson = require('../build/contracts/NameRegistry.json');
-const NameRegistryAbi = NameRegistryJson.abi;
-
-const Web3 = require('web3');
-
 const web3 = new Web3("http://127.0.0.1:7545");
 
 
@@ -16,7 +10,7 @@ web3.eth.getAccounts()
         accounts => defaultAccount=accounts[0]
         );
 // Step 3
-const NameRegistryAddress = "0xC9602b27DF4463f4dD5D3394134Da8cD57c6909c"
+const NameRegistryAddress = "0x09Ac25a595dF43291b166112cF48E73CC7B1db50"
 
 const NameRegistryContract = new web3.eth.Contract(NameRegistryAbi, NameRegistryAddress);
 
@@ -25,11 +19,20 @@ const NameRegistryContract = new web3.eth.Contract(NameRegistryAbi, NameRegistry
 
 NameRegistryContract
 .methods.addUser("Mihir").send({
-    from: "0x924c98fFfbF83b720790321884f54d0aa87eC0Ec",
+    from: "0xeAB93da2D43d0c1E423f8f6bE15C3f790150c758",
     gas: "3000000",
-    gasPrice: "1000000"
+    gasPrice: "1"
 })
-.then(console.log);
+.on("receipt",
+        function (receipt) {
+            console.log(receipt);
+        }
+)
+.on("error",
+        function (error, receipt) {
+            console.log({error, receipt});
+        }
+)
 
 NameRegistryContract
 .methods

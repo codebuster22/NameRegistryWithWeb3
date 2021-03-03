@@ -12,7 +12,7 @@ contract NameRegistry {
     uint[] public user_ids;
     mapping(uint=>Person) public id_to_person;
     mapping(address=>uint) public address_to_user_id;
-    
+
     // Function declarations
     
     function addUser(string memory _name) public {
