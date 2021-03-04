@@ -6,8 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to dwitter</h1>
-    <script type="text/javascript" src="./abi.js"></script>
+    <h1>Welcome to Name Registry</h1>
+    <input type="text" id="input_username" name="username" onchange="handleUsernameChange" placeholder="Enter Username" >
+    <input type="text" id="input_address" name="address" onchange="handleAddressChange" placeholder="Enter Address" >
+    <button type="button" id="button_signup" name="signup" onclick="handleSignUpClick">Sign Up!</button>
+    <h2>Logged in as:-</h2>
+    <h3 id="username"></h3>
+    <h2>Fetched Details:-</h2>
+    <h3 id="username_fetch"></h3>
+    <h2>New User added</h2>
+    <h3 id="username_from_events"></h3>
+    <h2>New Filtered User added</h2>
+    <h3 id="username_from_filter_events"></h3>
+    <script type="text/javascript" src="./artifacts/NameRegistryAbi.js"></script>
     <script type="text/javascript" src="./node_modules/web3/dist/web3.min.js"></script>
     <script type="text/javascript" src="./index.js"></script>
 </body>

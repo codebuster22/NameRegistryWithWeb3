@@ -13,6 +13,8 @@ contract NameRegistry {
     mapping(uint=>Person) public id_to_person;
     mapping(address=>uint) public address_to_user_id;
 
+    event NewUser(address indexed user_address, string user_name);
+
     // Function declarations
     
     function addUser(string memory _name) public {
@@ -21,6 +23,7 @@ contract NameRegistry {
         user_ids.push(user_counter);
         id_to_person[user_counter] = new_person;
         address_to_user_id[msg.sender] = user_counter;
+        emit NewUser(msg.sender,_name);
     }
     
     function getUserById(uint _id) public view returns(Person memory person) {
